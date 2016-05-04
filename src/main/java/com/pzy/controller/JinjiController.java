@@ -27,6 +27,7 @@ public class JinjiController {
 	@Autowired
 	private JinjiService jinjiService;
 	
+	
 	@Autowired
 	private CategoryService categoryService;
 	
