@@ -214,6 +214,7 @@ public class FrontController {
 		return "viewproject";
 	}
 	
+	
 	@RequestMapping("viewvideo")
 	public String viewvideo(Long id,Model model) {
 		model.addAttribute("bean",videoService.find(id));
