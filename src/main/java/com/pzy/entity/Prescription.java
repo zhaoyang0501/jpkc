@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 /***
  * @author Administrator
- *
+ *教学大纲
  */
 @Entity
 @Table(name = "t_Prescription")

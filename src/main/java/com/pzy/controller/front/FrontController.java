@@ -47,6 +47,8 @@ public class FrontController {
 	private com.pzy.service.JinjiService jinjiService;
 	@Autowired
 	private com.pzy.service.VideoService videoService;
+	@Autowired
+	private com.pzy.service.WorkService workService;
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true)); 
@@ -85,15 +87,7 @@ public class FrontController {
 	}
 	
 	
-	/***
-	 * 我的订单
-	 * @return
-	 */
-	@RequestMapping("myorder")
-	public String myorder(Model model,HttpSession httpSession) {
-		User user=(User)httpSession.getAttribute("user");
-		return "myorder";
-	}
+	
 	/***
 	 * 取消订单
 	 * @param id
@@ -148,7 +142,6 @@ public class FrontController {
 	
 	
 	/***
-	 * 执行登陆动作
 	 * @param user
 	 * @param httpSession
 	 * @param model
@@ -169,7 +162,6 @@ public class FrontController {
 	}
 	
 	/***
-	 *家务帮列表
 	 * @param model
 	 * @return
 	 */
@@ -200,6 +192,22 @@ public class FrontController {
 	public String jinji(Model model,String key,Long cid) {
 		model.addAttribute("lists",jinjiService.findAll());
 		return "jinji";
+	}
+	@RequestMapping("work")
+	public String work(Model model,String key,Long cid) {
+		model.addAttribute("lists",workService.findAll());
+		return "work";
+	}
+	@RequestMapping("submitwork")
+	public String submitwork(Long id,Model model) {
+		model.addAttribute("bean",workService.find(id));
+		return "submitwork";
+	}
+	@RequestMapping("dosubmitwork")
+	public String dosubmitwork(Long id,Model model) {
+		model.addAttribute("tip","作业提交成功！");
+		model.addAttribute("lists",workService.findAll());
+		return "work";
 	}
 	
 	/**

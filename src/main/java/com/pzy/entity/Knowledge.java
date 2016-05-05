@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 /***
- * 药方
+ * 教学大纲
  * @author Administrator
  *
  */

@@ -47,19 +47,12 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>方剂发布</h3>
+								<h3>教学大纲发布</h3>
 							</div>
 							
 							<div class="widget-container">
 								
 							<form action="${pageContext.request.contextPath}/admin/prescription/create" method="post" id=''>
-							
-							<div class="control-group">
-								<label for="title" class="control-label">缩略图：</label>
-								<div class="controls">
-									<input type="text" name="img" placeholder="">
-								</div>
-							</div>
 							
 							
 							<div class="control-group">
@@ -70,7 +63,7 @@
 							</div>
 							
 							<div class="control-group">
-								<label for="title" class="control-label">标题：</label>
+								<label for="title" class="control-label">教学大纲标题：</label>
 								<div class="controls">
 									<input type="text" name="title" placeholder="">
 								</div>

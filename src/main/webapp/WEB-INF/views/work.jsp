@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -81,24 +82,40 @@
 
 		<section class="envor-section blog-list">
 			<div class="container">
-				 <div class="row" style="margin-top: 60px;">
-                  <div class="col-lg-12">
-                  <div class="envor-projects-listing envor-projects-listing-5-cols" style="margin-left: -30px; width: 1170px;">
-					
-					<c:forEach items="${lists }" var="bean">
-						<article class="envor-project envor-padding-bottom-30 envor-padding-left-30 javascript html envor-sorting-item envor-listing-item" style="width: 234px;">
-		                      <div class="envor-project-inner">
-		                        <figure><a href=""><img src="http://www.icourses.cn/gjjpkc/docattach/20160111/20160111142754266ff8080814ff2ad9101522f5e15a4010c.png" alt=""></a><figcaption style="display: none;"><a href="http://www.icourses.cn/gjjpkc/docattach/20160111/20160111142754266ff8080814ff2ad9101522f5e15a4010c.png" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
-		                        <div class="envor-project-details">
-		                         <p class="link"><a href="viewvideo?id=${bean.id }">讲师：${bean.name }</a></p>
-		                          <p class="filter" ><h3 style="color: red">${bean.title }</h3></p>
-		                        </div>
-		                      </div>
-                   		 </article>
-					</c:forEach>
-                  </div>
-              </div>
-              </div>
+			 <c:if test="${tip!=null }">
+			      <div class="envor-msg envor-msg-info">
+			                <header>
+			                	  提示!
+			                  <i class="fa fa-times"></i>
+			                </header>
+			                <p>${tip }</p>
+			          </div>
+      </c:if>
+				<table class="table table-bordered">
+			<thead>
+				<tr>
+						<th>作业标题</th>
+						<th>发布者</th>
+						<th>截止提交日期</th>
+						<th>发布时间</th>
+						<th>状态</th>
+						<th>提交</th>
+				 </tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${lists }" var="bean">
+				<tr>
+						<th><a href="submitwork?id=${bean.id}">${bean.title }</a> <img src="http://www.bjsxt.com/statics/images/bjsxt/kb_new.gif" style="opacity: 1;"></th>
+						<th> ${bean.name} </th>
+						<th> <fmt:formatDate value="${bean.createDate }" pattern="yyyy/MM/dd" /> </th>
+						<th> <fmt:formatDate value="${bean.createDate }" pattern="yyyy/MM/dd" /> </th>
+						<th><span class="label label-success">开放提交</span></th>
+						<th> <a href="submitwork?id=${bean.id }">提交</a> </th>
+				 </tr>
+			</c:forEach>
+				
+			</tbody>
+			</table>
 
 
 

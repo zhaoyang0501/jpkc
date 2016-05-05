@@ -39,7 +39,7 @@
 					<div class="span12">
 						<div class="content-widgets ">
 							<div class="widget-head  bondi-blue" >
-								<h3>养生知识管理</h3>
+								<h3>课程介绍管理</h3>
 							</div>
 							<div class="box well form-inline">
 								<span>标题：</span>

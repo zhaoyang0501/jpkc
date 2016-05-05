@@ -1,4 +1,4 @@
-jQuery.work = {
+jQuery.adminWork = {
 		userDataTable:null,
 		initSearchDataTable : function() {
 			if (this.userDataTable == null) {
@@ -51,23 +51,19 @@ jQuery.work = {
 					"aoColumns" : [{
 						"mDataProp" : "id"
 					}, {
-						"mDataProp" : "user.name"
+						"mDataProp" : "name"
+					}, {
+						"mDataProp" : "title"
 					},{
-						"mDataProp" : "workdate"
-					},{
-						"mDataProp" : "cash"
-					},{
-						"mDataProp" : "unit"
-					},{
-						"mDataProp" : "school"
+						"mDataProp" : "createDate"
 					},{
 						"mDataProp" : ""
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [6],
+							'aTargets' : [4],
 							'fnRender' : function(oObj, sVal) {
-								return" <button class=\"btn2 btn-info\" onclick=\"$.work.showEdit("+oObj.aData.id+")\"><i class=\"icon-edit\"></i> 修改</button>  <button class=\"btn2 btn-info\" onclick=\"$.work.deleteUser("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
+								return " <button class=\"btn2 btn-info\" onclick=\"$.adminWork.deletework("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
 							}
 						},
 					 {
@@ -84,7 +80,7 @@ jQuery.work = {
 			}
 
 		},
-		deleteUser :function(id){
+		deletework :function(id){
 			bootbox.confirm( "是否确认删除？", function (result) {
 	            if(result){
 	            	$.ajax({
@@ -94,7 +90,7 @@ jQuery.work = {
 	        			success : function(json) {
 	        				if(json.state=='success'){
 	        					noty({"text":""+ json.msg +"","layout":"top","type":"success","timeout":"2000"});
-	        					$.work.initSearchDataTable();
+	        					$.adminWork.initSearchDataTable();
 	        				}else{
 	        					noty({"text":""+ json.resultMap.msg +"","layout":"top","type":"warning"});
 	        				}
@@ -118,10 +114,6 @@ jQuery.work = {
     			success : function(json) {
     				if(json.state=='success'){
     					$("#name").val(json.object.name);
-    					$("#school").val(json.object.school);
-    					$("#unit").val(json.object.unit);
-    					$("#cash").val(json.object.cash);
-    					$("#workdate").val(json.object.workdate);
     					$("#remark").val(json.object.remark);
     				}else{
     					noty({"text":""+ json.msg +"","layout":"top","type":"warning"});
@@ -141,7 +133,7 @@ jQuery.work = {
     				if(json.state=='success'){
     					$("#_modal").modal('hide');
     					noty({"text":""+ json.msg +"","layout":"top","type":"success","timeout":"2000"});
-    					$.work.initSearchDataTable();
+    					$.adminWork.initSearchDataTable();
     				}else{
     					noty({"text":""+ json.msg +"","layout":"top","type":"warning"});
     				}

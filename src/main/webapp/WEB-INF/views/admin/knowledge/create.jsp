@@ -47,7 +47,7 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>养生知识发布</h3>
+								<h3>课程介绍发布</h3>
 							</div>
 							
 							<div class="widget-container">
@@ -55,7 +55,7 @@
 							<form action="${pageContext.request.contextPath}/admin/knowledge/create" method="post" id=''>
 							
 							<div class="control-group">
-								<label for="title" class="control-label">缩略图：</label>
+								<label for="title" class="control-label">课程缩略图：</label>
 								<div class="controls">
 									<input type="text" name="img" placeholder="">
 								</div>
@@ -70,7 +70,7 @@
 							</div>
 							
 							<div class="control-group">
-								<label for="title" class="control-label">标题：</label>
+								<label for="title" class="control-label">课程名称：</label>
 								<div class="controls">
 									<input type="text" name="title" placeholder="">
 								</div>

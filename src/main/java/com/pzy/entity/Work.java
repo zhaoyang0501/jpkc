@@ -11,13 +11,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 /***
- * 教学日历
- * @author Administrator
+ * 作业
  *
  */
 @Entity
-@Table(name = "t_Jinji")
-public class Jinji {
+@Table(name = "t_work")
+public class Work {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

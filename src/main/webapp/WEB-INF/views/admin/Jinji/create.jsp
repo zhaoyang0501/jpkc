@@ -47,19 +47,13 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>饮食禁忌发布</h3>
+								<h3>教学日历发布</h3>
 							</div>
 							
 							<div class="widget-container">
 								
 							<form action="${pageContext.request.contextPath}/admin/jinji/create" method="post" id=''>
 							
-							<div class="control-group">
-								<label for="title" class="control-label">缩略图：</label>
-								<div class="controls">
-									<input type="text" name="img" placeholder="">
-								</div>
-							</div>
 							
 							
 							<div class="control-group">
