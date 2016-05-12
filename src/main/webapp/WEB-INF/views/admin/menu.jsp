@@ -39,8 +39,10 @@
 					<li><a href="${pageContext.request.contextPath}/admin/prescription/index"><i class="icon-pencil"></i>教学大纲管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/knowledge/index"><i class="icon-pencil"></i>课程介绍管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/project/index"><i class="icon-pencil"></i>教学计划管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/video/index"><i class="icon-pencil"></i>教学视频管理</a></li>
 				
 						<li><a href="${pageContext.request.contextPath}/admin/work/index"><i class="icon-pencil"></i>课后作业管理</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/submitwork/index"><i class="icon-pencil"></i>作业提交查询</a></li>
 			
 				</c:if>
 				

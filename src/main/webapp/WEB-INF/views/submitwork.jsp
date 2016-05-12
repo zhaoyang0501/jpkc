@@ -85,10 +85,10 @@
 
               <div class="riva-toggle-tab" style="display: block;">
                 <h2><strong>作业提交(${bean.title })</strong> </h2>
-                <form class="envor-f1" action="dosubmitwork" method="post">
-                 
+                <form  enctype="multipart/form-data" class="envor-f1" action="dosubmitwork" method="post">
+                 <input type="hidden" name="work.id" value="${bean.id }"/>
                     <p><label for="rt1-phone">作业文档：</label>
-                    <input type="file"/>
+                    <input type="file" name='file'/>
                     </p>
                   <p><label for="rt1-country">备注</label>
                   	<textarea rows="6" cols="" name='remark'></textarea>

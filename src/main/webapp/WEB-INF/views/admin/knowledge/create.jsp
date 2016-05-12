@@ -52,12 +52,12 @@
 							
 							<div class="widget-container">
 								
-							<form action="${pageContext.request.contextPath}/admin/knowledge/create" method="post" id=''>
+							<form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/knowledge/create" method="post" id=''>
 							
 							<div class="control-group">
 								<label for="title" class="control-label">课程缩略图：</label>
 								<div class="controls">
-									<input type="text" name="img" placeholder="">
+									<input type="file" name="file" placeholder="">
 								</div>
 							</div>
 							

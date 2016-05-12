@@ -88,7 +88,7 @@
 					<c:forEach items="${lists }" var="bean" >
 						<article class="envor-post envor-post-2">
 							<figure>
-								<a href="${bean.img }" class="colorbox postimg cboxElement"><img src="${bean.img }" alt="Pellentesque in augue ut quam tincidunt ornare"></a>
+								<a href="${bean.img }" class="colorbox postimg cboxElement"><img src="upload/${bean.img }" alt="Pellentesque in augue ut quam tincidunt ornare"></a>
 							</figure>
 							<header>
 								<h3 style="margin-top: 0px;">

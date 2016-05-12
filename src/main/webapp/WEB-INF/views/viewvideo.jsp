@@ -84,7 +84,7 @@
               	<hr>
                 </header>
                <div>
-               	<video  width="100%" src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
+               	<video  width="100%" src="upload/${bean.img }" controls="controls">
 your browser does not support the video tag
 </video>
                </div>

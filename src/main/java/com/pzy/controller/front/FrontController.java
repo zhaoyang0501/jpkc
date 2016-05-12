@@ -1,5 +1,6 @@
 package com.pzy.controller.front;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -14,14 +15,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pzy.entity.Category;
+import com.pzy.entity.Knowledge;
 import com.pzy.entity.Project;
+import com.pzy.entity.SubmitWork;
 import com.pzy.entity.User;
 import com.pzy.service.CategoryService;
 import com.pzy.service.KnowledgeService;
 import com.pzy.service.PrescriptionService;
 import com.pzy.service.ProjectService;
+import com.pzy.service.SubmitWorkService;
 import com.pzy.service.UserService;
 /***
  * 前台，首页各种连接登陆等
@@ -49,6 +56,9 @@ public class FrontController {
 	private com.pzy.service.VideoService videoService;
 	@Autowired
 	private com.pzy.service.WorkService workService;
+	
+	@Autowired
+	private SubmitWorkService submitWorkService;
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true)); 
@@ -87,14 +97,6 @@ public class FrontController {
 	}
 	
 	
-	
-	/***
-	 * 取消订单
-	 * @param id
-	 * @param model
-	 * @param httpSession
-	 * @return
-	 */
 	
 	
 	
@@ -243,6 +245,31 @@ public class FrontController {
 	public String viewjinji(Long id,Model model) {
 		model.addAttribute("bean",this.jinjiService.find(id));
 		return "viewjinji";
+	}
+	@RequestMapping(value = "/dosubmitwork", method = RequestMethod.POST)
+	public String save( HttpServletRequest request,SubmitWork submitWork,Model model,@RequestParam(value = "file", required = false) MultipartFile file) {
+			User user=(User)request.getSession().getAttribute("user");
+	        String path = request.getSession().getServletContext().getRealPath("upload");  
+	        String fileName = file.getOriginalFilename();  
+	        File targetFile = new File(path, fileName);  
+	        if(!targetFile.exists()){  
+	            targetFile.mkdirs();  
+	        }  
+	  
+	        //保存  
+	        try {  
+	            file.transferTo(targetFile);  
+	        } catch (Exception e) {  
+	            e.printStackTrace();  
+	        }  
+	    
+	    submitWork.setFilepath(fileName); 
+	    submitWork.setCreateDate(new Date());
+	    submitWork.setUser(user);
+	    submitWork.setWork(workService.find(submitWork.getWork().getId()));
+	    submitWorkService.save(submitWork);
+		model.addAttribute("tip","提交成功");
+		return "submitwork";
 	}
 	
 }

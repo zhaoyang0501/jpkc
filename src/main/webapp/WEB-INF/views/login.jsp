@@ -90,7 +90,7 @@
 			  <div class="panel-body">
 			    <form class="form-vertical envor-f1" action="./dologin" method="post">
 			                  <p><label for="rt1-first-name">姓名*</label>  <input type="text"  name='username'></p>
-			                  <p><label for="rt1-first-name">姓名*</label> <input type="password" name='password'></p>
+			                  <p><label for="rt1-first-name">密码*</label> <input type="password" name='password'></p>
 			         
 			                  <button type="submit" class="btn btn-orange">登陆</button>
 			              </form>
